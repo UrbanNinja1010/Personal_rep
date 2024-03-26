@@ -28,6 +28,7 @@ CoordMode "Mouse", "Screen"
 #include AltWindowDrag.ahk
 
 
+
 ; ; = comment
 ; ^ = control
 ; # = windows key
