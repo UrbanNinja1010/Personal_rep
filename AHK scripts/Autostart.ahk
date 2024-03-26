@@ -26,7 +26,6 @@ msg(text) {
 CoordMode "Mouse", "Screen"
 
 #include AltWindowDrag.ahk
-#include LNCHR-pub-master/LNCHR-Main.ahk
 
 
 ; ; = comment
