@@ -4,6 +4,7 @@
 
 Suspend 1 ; suspend all hotkeys until loaded
 
+
 global lngui_props := object() ; stored in an object to allow for easier access in functons (objects are global)
 lngui_props.calceqfile := "LNCHR-CalcEqns.txt" ; used ib Funcs
 
@@ -24,6 +25,7 @@ toggleCapsLock(){
 !CapsLock::
 ^CapsLock::
 +CapsLock::toggleCapsLock()
+
 
 
 ; Some flags for commands
@@ -206,7 +208,7 @@ CapsLock::
                 close_lngui() ; don't return here as a second key press might have been used
             }
         if (key_presses.caps > 1){ ; do this when double press
-                Send "#!{Space}" ; win+alt+space, opens MS Power Toys Run
+                Send "!{Space}" ; win+alt+space, opens MS Power Toys Run
                 close_lngui()
                 return
             }

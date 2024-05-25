@@ -26,6 +26,7 @@ msg(text) {
 CoordMode "Mouse", "Screen"
 
 #include AltWindowDrag.ahk
+#include LNCHR-Main.ahk
 
 
 ; ; = comment
@@ -40,30 +41,3 @@ CoordMode "Mouse", "Screen"
 !+R::reload ; Reload the app
 #p::Pause -1  ; Pause the scripts
 
-
-::ssa:: ; HS "ssa" select * from
-(
-SELECT *
-FROM 
-)
- 
-::sor:: ; HS "sor" -> Order by x desc
-{
-  Send("ORDER BY  DESC{Left 5}")
-}
-
-::sli:: ; HS "sli" -> like '%%'
-{
-Send("LIKE '%%'{Left 2}")
-}
-
-::mvg:: ; HS "mvg" mail signature
-(
-Met vriendelijke groet/kind regards,
-Mendel Niehof
-)
-
-::pass:: ; HS "pass" send clipboard
-{
-  Send(A_Clipboard)
-}
