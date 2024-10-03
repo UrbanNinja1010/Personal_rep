@@ -100,7 +100,54 @@ GetActiveExplorerPath()
     }
 }
 
+; ____________________________________________________________________________Open or switchto edge defailt profile____
 
+SwitchToDefaultProfile(){
+    If WinExist("ahk_exe msedge.exe --profile-directory=`"Default`"")
+    {
+        WinActivate("ahk_exe msedge.exe --profile-directory=`"Default`"")
+    }
+}
+; ______________________________________________________________________________ Outlook ___________
+; BUFFERS
+; ______________________________________________________________________________ Outlook ___________
+
+Buffer1 := ""
+Buffer2 := ""
+Buffer3 := ""
+Buffer4 := ""
+Buffer5 := ""
+Buffer6 := ""
+Buffer7 := ""
+Buffer8 := ""
+Buffer9 := ""
+Buffer0 := ""
+
+SaveToBuffer(buf, text){
+    global 
+    Buffer%buf% := text
+}
+
+TypeBuffer(buf){
+    global
+    Send(Buffer%buf%) 
+}
+
+; Look at all buffs
+ViewBuffers(){
+    text := 'Buffer 1: `n' Buffer1
+        . '`n`nBuffer 2: `n' Buffer2
+        . '`n`nBuffer 3: `n' Buffer3
+        . '`n`nBuffer 4: `n' Buffer4
+        . '`n`nBuffer 5: `n' Buffer5
+        . '`n`nBuffer 6: `n' Buffer6
+        . '`n`nBuffer 7: `n' Buffer7
+        . '`n`nBuffer 8: `n' Buffer8
+        . '`n`nBuffer 9: `n' Buffer9
+        . '`n`nBuffer 0: `n' Buffer0
+        
+    MsgBox(text,"the buffers")
+}
 
 
 
