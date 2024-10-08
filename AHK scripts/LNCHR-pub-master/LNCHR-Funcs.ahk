@@ -112,6 +112,7 @@ SwitchToDefaultProfile(){
 ; BUFFERS
 ; ______________________________________________________________________________ Outlook ___________
 
+; general buffers
 Buffer1 := ""
 Buffer2 := ""
 Buffer3 := ""
@@ -123,6 +124,20 @@ Buffer8 := ""
 Buffer9 := ""
 Buffer0 := ""
 
+; usernames and passwords
+Buffer11 := ""
+Buffer12 := ""
+Buffer21 := ""
+Buffer22 := ""
+Buffer31 := ""
+Buffer32 := ""
+Buffer41 := ""
+Buffer42 := ""
+Buffer51 := ""
+Buffer52 := ""
+Buffer61 := ""
+Buffer62 := ""
+
 SaveToBuffer(buf, text){
     global 
     Buffer%buf% := text
@@ -131,6 +146,17 @@ SaveToBuffer(buf, text){
 TypeBuffer(buf){
     global
     Send(Buffer%buf%) 
+}
+
+SendUsernameAndPassword(upwBuf){
+    global
+    unId := upwBuf + 1
+    pwId := upwBuf + 2
+    un := Buffer%unId%
+    pw := Buffer%pwId%
+    
+    Send(un . "{Tab}" . pw) 
+
 }
 
 ; Look at all buffs
