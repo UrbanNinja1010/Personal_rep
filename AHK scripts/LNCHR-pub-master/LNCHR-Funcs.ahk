@@ -113,6 +113,7 @@ SwitchToDefaultProfile(){
 ; ______________________________________________________________________________ Outlook ___________
 
 ; general buffers
+; TODO make this dynamic (with array)
 Buffer1 := ""
 Buffer2 := ""
 Buffer3 := ""

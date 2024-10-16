@@ -42,9 +42,9 @@ lngui_props.query_autocomplete := True
 ;  lngui is the launcher gui, pronounced linguini
 
 
-lngui_props.title := " 🚀 LNCHR" ; restore the title
-if UsingMainWorkComputer
-    lngui_props.title  := lngui_props.title " 💼"
+lngui_props.title := " 🚀 What's Your Command?" ; restore the title
+if UsingAnyWorkComputer
+    lngui_props.title  := "💼 MDN Launcher"
 
 
 lngui_props.memfile := "LNCHR-Memory.ini"
@@ -90,7 +90,7 @@ build_lngui(){
 
     lngui := Gui()
     
-    acccolor := "FFB900" ; accentcolor
+    acccolor := "ff7979" ; accentcolor
     backcolor := "1d1f21" ; background color
     common_gui_opts := "xm w400 cc5c8c6 -E0x200"
 
