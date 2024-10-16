@@ -30,7 +30,7 @@ toggleCapsLock(){
 
 ; Some flags for commands
 UsingMainWorkComputer := A_ComputerName == "LT-5CG1129VTJ" ; Global flag for using main work computer, changes title
-UsingAnyWorkComputer := InStr(A_ComputerName, "LT-") == 1 ; Global flag for using any work computer for select commands
+UsingAnyWorkComputer := InStr(A_ComputerName, "L-") == 1 ; Global flag for using any work computer for select commands
 
 ; some settings
 lngui_props.show_commands_tips := True
