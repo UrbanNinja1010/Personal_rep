@@ -39,5 +39,5 @@ CoordMode "Mouse", "Screen"
 #LButton::AWD_StartAction(0, "LButton") ; Move window with windows key + Lclick
 #RButton::AWD_StartAction(1, "RButton") ; Resize window with windows key + Rclick
 !+R::reload ; Reload the app
-#p::Pause -1  ; Pause the scripts
+; #p::Pause -1  ; Pause the scripts
 
