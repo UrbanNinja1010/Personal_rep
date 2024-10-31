@@ -37,6 +37,10 @@ lngui_props.show_commands_tips := True
 lngui_props.query_autocomplete := True
 
 
+; global vars
+work_lines := ""
+
+
 ; ______________________________________________________________________________ gui properties  ___________
 
 ;  lngui is the launcher gui, pronounced linguini
@@ -50,6 +54,34 @@ if UsingAnyWorkComputer
 lngui_props.memfile := "LNCHR-Memory.ini"
 if lngui_props.show_commands_tips
     lngui_props.commands := FileRead("HELP-Commands.txt") ; for tooltip prompt when in main
+    ;lMsgBox "UsingAnyWorkComputer: " UsingAnyWorkComputer
+    if UsingAnyWorkComputer
+        work_lines := filter_lines("XWORKX", lngui_props.commands)
+        
+        work_lines := StrReplace(work_lines, "XWORKX")
+        ;MsgBox "worklines: " work_lines
+       
+        work_lines_array := StrSplit(work_lines,["`r","`n"])
+        for index, line in work_lines_array
+            {   
+                if line == ""
+                    continue
+                ; Get the first 6 characters of the line
+                first_six := SubStr(line, 1, 6)
+
+                ;MsgBox "Filtering: " first_six
+                ;MsgBox "Before: " lngui_props.commands
+                ;A_Clipboard := lngui_props.commands
+                ; Call the filter_lines function with the extracted characters
+                lngui_props.commands := reverse_filter_lines(first_six, lngui_props.commands)
+                
+                ;MsgBox "After: " lngui_props.commands
+                ;A_Clipboard := lngui_props.commands
+            }
+    else
+        lngui_props.commands := reverse_filter_lines("XWORKX", lngui_props.commands)
+    lngui_props.commands := StrReplace(lngui_props.commands, "XWORKX")
+    ;MsgBox "final commands: " lngui_props.commands
 
 
 
@@ -399,6 +431,31 @@ filter_lines(q, s, one:=False) {  ; used to filter lines from a string "s", each
         s := StrSplit(s,["`r","`n"])[1]
      return s
 }
+
+reverse_filter_lines(q, s, one := False) {  ; used to filter lines from a string "s", each line starting with characters in "q"
+    if q == ""
+        return ""
+
+    ; Escape any regex special characters in `q`
+    escaped_q := RegExReplace(q, "[\^$.|?*+()[]{}]", "\$0")
+    
+    ; Create regex pattern to match any line that begins with `q` and remove any trailing newlines
+    s := RegExReplace(s, "m)^" escaped_q ".*(\R|$)+", "")
+
+    ; If the filtered result is empty, return it directly
+    if s == ""
+        return s
+
+    ; If `one` is True, return only the first remaining line
+    if one
+        s := StrSplit(s, "`n")[1]
+
+    return s
+}
+
+
+
+
 
 
 Suspend 0 ; re-enable hot keys
